@@ -76,15 +76,21 @@ Every LLM comes with its own parameters such as model, limit of tokens, used reg
 
 ### AWS Bedrock
 
-- `model` - Specifies the Claude model to use (default: `anthropic.claude-3-haiku-20240307-v1:0`)
-- `region` - AWS Bedrock region to use (default: `us-east-1`)
-- `max_tokens` - Maximum tokens for output (default: `64`)
-- `temperature` - Controls output randomness (range: 0.0 to 1.0, default: `0.0`)
-- `batch_size` - For line items; defines how many items are processed per request. Default is `1` (processes
+- `model`  
+Specifies the Claude model to use (default: `anthropic.claude-3-haiku-20240307-v1:0`)
+- `region`  
+AWS Bedrock region to use (default: `us-east-1`)
+- `max_tokens`  
+Maximum tokens for output (default: `64`)
+- `temperature`  
+Controls output randomness (range: 0.0 to 1.0, default: `0.0`)
+- `batch_size`  
+For line items; defines how many items are processed per request. Default is `1` (processes
   individually). Set to 0 to process all items in one request, or specify any other number to indicate how many line
   items will be sent in each request. Note: Processing multiple items in one request increases the risk of AI
   hallucinations
-- `keep_history` - Determines if the model retains session history for context-aware responses (default: `false`)
+- `keep_history`  
+Determines if the model retains session history for context-aware responses (default: `false`)
 
 #### Model information
 
@@ -93,18 +99,14 @@ Every LLM comes with its own parameters such as model, limit of tokens, used reg
 
 ### OpenAI
 
-- `model` - Specifies the model to use (default: `gpt-3.5-turbo`)
-- `max_tokens` - Maximum tokens for output (default: `64`)
-- `temperature` - Controls output randomness (range: 0.0 to 2.0, default: `0.0`)
-- `batch_size` - For line items; defines how many items are processed per request. Default is `1` (processes
+- `model`  
+Specifies the model to use (default: `gpt-3.5-turbo`)
+- `max_tokens`  
+Maximum tokens for output (default: `64`)
+- `temperature`  
+Controls output randomness (range: 0.0 to 2.0, default: `0.0`)
+- `batch_size`  
+For line items; defines how many items are processed per request. Default is `1` (processes
   individually). Set to 0 to process all items in one request, or specify any other number to indicate how many line
   items will be sent in each request. Note: Processing multiple items in one request increases the risk of AI
   hallucinations
-
-    input: Dict[str, str] = Field(default_factory=Dict)
-    prompt: str = Field(min_length=1)
-    output: str = Field(min_length=1)
-    model: str = Field(default=DEFAULT_MODEL)
-    max_tokens: conint(ge=1) = Field(default=DEFAULT_MAX_TOKENS)
-    temperature: confloat(ge=0.0, le=2.0) = Field(default=0.0)
-    batch_size: conint(ge=0) = Field(default=1)
